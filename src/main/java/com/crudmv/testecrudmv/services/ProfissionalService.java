@@ -1,6 +1,5 @@
 package com.crudmv.testecrudmv.services;
 
-import com.crudmv.testecrudmv.domain.Cidade;
 import com.crudmv.testecrudmv.domain.Endereco;
 import com.crudmv.testecrudmv.domain.Estabelecimento;
 import com.crudmv.testecrudmv.domain.Profissional;
@@ -15,11 +14,13 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ProfissionalService {
 
     @Autowired
@@ -76,7 +77,7 @@ public class ProfissionalService {
     public Profissional fromDTO(ProfissionalNewDTO objDto) {
         Profissional prof = new Profissional(null, objDto.getNome());
 
-        Estabelecimento est = new Estabelecimento(objDto.getNome(), objDto.getTelefone1(), objDto.getTelefone2(), objDto.getTelefone3(), null, null);
+        Estabelecimento est = new Estabelecimento(null, objDto.getNome(), objDto.getTelefone1(), objDto.getTelefone2(), objDto.getTelefone3());
         Endereco end = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(),
                 objDto.getBairro(), objDto.getCep(), prof, est);
 

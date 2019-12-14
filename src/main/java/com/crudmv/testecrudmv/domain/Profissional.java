@@ -20,10 +20,12 @@ public class Profissional implements Serializable {
     private String nome;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "profissionais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Estabelecimento> estabelecimento = new ArrayList<Estabelecimento>();
+    @JoinColumn(name = "estabelecimento.id")
+    @OneToMany
+    private List<Estabelecimento> estabelecimentos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "profissionais")
+    @JoinColumn(name = "endereco.id")
+    @OneToMany
     private List<Endereco> enderecos = new ArrayList<>();
 
     @ElementCollection
@@ -56,11 +58,11 @@ public class Profissional implements Serializable {
     }
 
     public List<Estabelecimento> getEstabelecimento() {
-        return estabelecimento;
+        return estabelecimentos;
     }
 
-    public void setEstabelecimento(List<Estabelecimento> estabelecimento) {
-        this.estabelecimento = estabelecimento;
+    public void setEstabelecimento(List<Estabelecimento> estabelecimentos) {
+        this.estabelecimentos = estabelecimentos;
     }
 
     public List<Endereco> getEnderecos() {

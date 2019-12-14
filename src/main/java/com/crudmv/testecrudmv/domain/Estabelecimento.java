@@ -17,16 +17,19 @@ public class Estabelecimento implements Serializable {
     @Column(name = "nome_estabelecimento")
     private String nome;
 
-
-    @OneToMany(mappedBy = "profissionais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "PROFISSIONAL_ESTABELECIMENTO", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "estabelecimento_id"))
+    @OneToMany
     private List<Endereco> enderecos = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
+    @OneToMany
+    private List<Profissional> profissionais = new ArrayList<>();
 
-    public Estabelecimento(String nome, String telefone1, String telefone2, String telefone3, Object o, Object o1) {
+
+    public Estabelecimento(Object id, String nome, String telefone1, String telefone2, String telefone3) {
     }
 
     public Estabelecimento(Long id, String nome) {
@@ -65,6 +68,14 @@ public class Estabelecimento implements Serializable {
 
     public void setTelefones(Set<String> telefones) {
         this.telefones = telefones;
+    }
+
+    public List<Profissional> getListProfissionais() {
+        return profissionais;
+    }
+
+    public void setListProfissionais(List<Profissional> profissionais) {
+        this.profissionais = profissionais;
     }
 
     @Override

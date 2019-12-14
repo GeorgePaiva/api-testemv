@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/estabelecimentos")
 public class EstabelecimentoResource {
 
-    @Autowired
+    @Autowired(required = true)
     private EstabelecimentoService service;
 
 
