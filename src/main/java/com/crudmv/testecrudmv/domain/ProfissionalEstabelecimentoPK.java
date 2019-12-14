@@ -3,10 +3,12 @@ package com.crudmv.testecrudmv.domain;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Table(name = "PROFISSIONALESTABELECIMENTOPK")
 public class ProfissionalEstabelecimentoPK implements Serializable {
     private static final long serialVersionUID = 1L;
 

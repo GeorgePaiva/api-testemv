@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "ENDERECO")
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -20,11 +21,9 @@ public class Endereco implements Serializable {
 
     // Associações
     @JsonIgnore
-    @ManyToOne
     @JoinColumn(name = "profissional_id")
     private Profissional profissional;
 
-    @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
 

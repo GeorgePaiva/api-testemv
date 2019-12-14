@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
+@Table(name = "ESTABELECIMENTO")
 public class Estabelecimento implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -17,7 +18,7 @@ public class Estabelecimento implements Serializable {
     private String nome;
 
 
-    @OneToMany(mappedBy = "estabelecimento")
+    @OneToMany(mappedBy = "profissionais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Endereco> enderecos = new ArrayList<>();
 
     @ElementCollection
