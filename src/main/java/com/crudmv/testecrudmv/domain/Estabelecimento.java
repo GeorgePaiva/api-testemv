@@ -28,8 +28,9 @@ public class Estabelecimento implements Serializable {
     @OneToMany
     private List<Profissional> profissionais = new ArrayList<>();
 
+    public Estabelecimento(){}
 
-    public Estabelecimento(Object id, String nome, String telefone1, String telefone2, String telefone3) {
+    public Estabelecimento(Long id, String nome, String telefone1, String telefone2, String telefone3) {
     }
 
     public Estabelecimento(Long id, String nome) {
